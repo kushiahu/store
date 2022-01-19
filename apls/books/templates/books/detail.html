@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}{{ book.name }} | Book Store{% endblock title %}
+
+
+{% block content %}
+<section class="section-detail">		
+	<div class="container-detail">
+		<div class="gallery">
+			<img class="img-fluid" src="{{ book.image.url }}">
+		</div>
+		<div class="book-detail">
+			<p class="book-detail-name">{{ book.name }}</p>
+			<p>Author: <span class="book-detail-author">{{ book.get_authors }}</span> | Editorial: <span class="book-detail-author">{{ book.editorial }}</span></p>
+			<p class="book-detail-price">$ {{ book.price }}</p>
+			<div class="book-detail-info">
+				<p>Información</p>
+				<p class="book-info">{{ book.description }}</p>
+			</div>
+			<form>
+				<input type="number" name="quantity" value="1">
+				<button class="btn is-link" type="submit">Añadir a carrito</button>
+			</form>
+		</div>
+	</div>
+
+</section>	
+{% endblock content %}

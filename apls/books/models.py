@@ -52,6 +52,9 @@ class Book(models.Model):
 	def __str__(self):
 		return self.name
 
+	def get_authors(self):
+		return ', '.join([author.name for author in self.authors.all()])
+
 	def save(self, *args, **kwargs):
 		# nombre-del-libro-789456
 		if not self.id:
