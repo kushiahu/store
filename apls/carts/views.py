@@ -8,6 +8,10 @@ from apls.books.models import Book
 
 
 # Function views
+def cart_view(request):
+	return render(request, 'carts/cart.html', {})
+
+
 def add_item_view(request):
 	if request.user.is_authenticated:
 		user = request.user
@@ -40,6 +44,8 @@ def add_item_view(request):
 				book=book, cart=cart,
 				quantity=quantity, price=book.price
 			)
+
+		cart.update_total()
 
 		messages.info(request, f'Se ha añadido {quantity} libro del {book.name}')
 
